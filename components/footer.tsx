@@ -27,7 +27,7 @@ const Footer = () => {
           <div className="flex items-center gap-2">
             <p>
               Made with ❤️ by{" "}
-              <Link href={"https://saqlain.com"}>
+              <Link href={"https://saqlain.work"}>
                 <span className="underline">Saqlain Sultan</span>
               </Link>
             </p>

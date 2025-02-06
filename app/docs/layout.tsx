@@ -9,13 +9,13 @@ import { Separator } from "@/components/ui/separator";
 export const docsBar = [
   {
     title: "Introduction",
-    href: "/components/accordion",
+    href: "/docs/introduction",
     description: "A vertically stacked set of interactive headings.",
     componentsDesign: "Design",
   },
   {
     title: "Installation",
-    href: "/components/alert",
+    href: "/docs/installation",
     description: "Displays a callout for user attention.",
   },
 ];
@@ -117,10 +117,10 @@ export default function ComponentsLayout({ children }: ComponentsLayoutProps) {
       <main className="relative py-6 lg:gap-10 lg:py-8">
         <div className="mx-auto w-full min-w-0">
           <div className="mb-4 space-y-1">
-            <h1 className="inline-block font-heading text-4xl lg:text-5xl font-bold">
+            {/* <h1 className="inline-block font-heading text-4xl lg:text-5xl font-bold">
               {components.find((c) => c.href === pathname)?.title ||
-                "Components"}
-            </h1>
+                "Documentation"}
+            </h1> */}
             <p className="text-muted-foreground">
               {components.find((c) => c.href === pathname)?.description}
             </p>

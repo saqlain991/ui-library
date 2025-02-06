@@ -24,7 +24,7 @@ const navigation = [
   { name: "Components", href: "/components" },
   { name: "Request", href: "/request" },
   { name: "Contact", href: "/contact" },
-  { name: "Github", href: "https://github.com/saqlain991" },
+  { name: "Github", href: "https://github.com/saqlain991/ui-library" },
 ];
 
 export function Navbar() {

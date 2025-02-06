@@ -22,7 +22,7 @@ export default function Home() {
         <Link href="/components">
           <ButtonColorful>Browse Components</ButtonColorful>
         </Link>
-        <Link href="https://github.com/saqlain991" target="_blank">
+        <Link href="https://github.com/saqlain991/ui-library" target="_blank">
           <Button size="lg" variant="outline">
             <Github className="mr-2 h-4 w-4" />
             GitHub

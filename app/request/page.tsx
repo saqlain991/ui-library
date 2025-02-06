@@ -1,3 +1,4 @@
+// app/request/page.tsx
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,7 +16,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Toast } from "@/components/ui/toast";
+import { useToast } from "@/hooks/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -33,6 +35,7 @@ const formSchema = z.object({
 });
 
 export default function RequestPage() {
+  const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -44,9 +47,9 @@ export default function RequestPage() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    Toast({
+    toast({
       title: "Request submitted!",
-      // description: "We will review your component request.",
+      description: "We will review your component request.",
     });
     form.reset();
   }
@@ -125,6 +128,7 @@ export default function RequestPage() {
           </form>
         </Form>
       </div>
+      <Toaster />
     </div>
   );
 }
