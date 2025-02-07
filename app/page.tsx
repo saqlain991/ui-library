@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div>
+    <div className="mt-10 w-full ">
       <HeroGeometric
         badge="UI Library"
         title1="Beautiful UI "

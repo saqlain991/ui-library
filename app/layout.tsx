@@ -1,32 +1,16 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Outfit } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { MobileSidebar } from "@/components/mobile-sidebar";
 import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/footer";
 
-// This th
-// const inter = Inter({
-//   subsets: ["latin"],
-//   display: "swap",
-//   preload: true,
-//   adjustFontFallback: true,
-// });
-
-// const outfit = Outfit({
-//   subsets: ["latin"],
-//   display: "swap",
-//   preload: true,
-//   adjustFontFallback: true,
-// });
-
+// Define the Outfit font with a variable for custom CSS usage
 const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
-  display: "swap",
-  preload: true,
-  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -42,11 +26,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="{outfit.className} bg-white dark:bg-black text-black dark:text-white">
+      <body
+        className={`${outfit.className} bg-white dark:bg-black text-black dark:text-white`}
+      >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="relative min-h-screen  sm:mb-10 md:mb-10">
+          <div className="relative min-h-screen sm:mb-10 md:mb-10">
             <Navbar />
-            <main className="pt-16 mx-10 mb-10">{children}</main>
+            <main className="  mb-10">{children}</main>
             <MobileSidebar />
             <Toaster />
           </div>

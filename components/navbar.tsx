@@ -20,7 +20,7 @@ import Clock from "./clock";
 
 const navigation = [
   // { name: "Home", href: "/" },
-  { name: "Docs", href: "/docs" },
+  { name: "Docs", href: "/docs/introduction" },
   { name: "Components", href: "/components" },
   { name: "Request", href: "/request" },
   { name: "Contact", href: "/contact" },
