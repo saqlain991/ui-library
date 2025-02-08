@@ -2,14 +2,10 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Check, Code, Copy, Eye } from "lucide-react";
-import { accordionExamples } from "./example";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Check, Code, Copy, Eye, Terminal } from "lucide-react";
+import { AlertExample } from "./example";
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function AccordionDemoPage() {
   const [showCode, setShowCode] = useState<Record<string, boolean>>({});
@@ -26,22 +22,26 @@ export default function AccordionDemoPage() {
   };
 
   const mainComponentCode = `
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+  import { Terminal } from "lucide-react"
 
-<Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Is it accessible?</AccordionTrigger>
-    <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
-  </AccordionItem>
-  <AccordionItem value="item-2">
-    <AccordionTrigger>Is it styled?</AccordionTrigger>
-    <AccordionContent>Yes. It comes with default styles that match your theme.</AccordionContent>
-  </AccordionItem>
-  <AccordionItem value="item-3">
-    <AccordionTrigger>Is it animated?</AccordionTrigger>
-    <AccordionContent>Yes. It's animated by default, but you can disable it if you prefer.</AccordionContent>
-  </AccordionItem>
-</Accordion>
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert"
+
+export function AlertDemo() {
+  return (
+    <Alert>
+      <Terminal className="h-4 w-4" />
+      <AlertTitle>Heads up!</AlertTitle>
+      <AlertDescription>
+        You can add components to your app using the cli.
+      </AlertDescription>
+    </Alert>
+  )
+}
+
 `;
 
   return (
@@ -93,27 +93,13 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
             </div>
           ) : (
             <div className="p-4">
-              <Accordion type="single" collapsible>
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>Is it accessible?</AccordionTrigger>
-                  <AccordionContent>
-                    Yes. It adheres to the WAI-ARIA design pattern.
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-2">
-                  <AccordionTrigger>Is it styled?</AccordionTrigger>
-                  <AccordionContent>
-                    Yes. It comes with default styles that match your theme.
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-3">
-                  <AccordionTrigger>Is it animated?</AccordionTrigger>
-                  <AccordionContent>
-                    Yes. Its animated by default, but you can disable it if you
-                    prefer.
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+              <Alert>
+                <Terminal className="h-4 w-4" />
+                <AlertTitle>Heads up!</AlertTitle>
+                <AlertDescription>
+                  You can add components to your app using the cli.
+                </AlertDescription>
+              </Alert>
             </div>
           )}
         </div>
@@ -121,7 +107,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
       {/* Examples Section */}
       <h2 className="text-3xl font-semibold">Examples</h2>
-      {accordionExamples.map((example) => (
+      {AlertExample.map((example) => (
         <div key={example.id} className="space-y-4  p-4 rounded-lg ">
           <h3 className="text-xl font-medium">{example.title}</h3>
           <div className="flex justify-end gap-2">

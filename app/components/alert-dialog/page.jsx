@@ -1,13 +1,7 @@
 "use client";
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+
 import {
   Check,
   Code,
@@ -21,7 +15,7 @@ import {
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
-export default function AlertDemo() {
+export default function AlertDialogDemo() {
   const [showCode, setShowCode] = useState(false);
   const [copied, setCopied] = useState(false);
 

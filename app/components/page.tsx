@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { components } from "./layout";
+import { components } from "./data";
 
 export default function ComponentsPage() {
   return (

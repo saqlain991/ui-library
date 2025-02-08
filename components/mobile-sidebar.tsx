@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { cn } from '@/lib/utils';
-import { Menu } from 'lucide-react';
-import { components } from '@/app/components/layout';
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+import { Menu } from "lucide-react";
+import { components } from "@/app/components/data";
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Components', href: '/components' },
-  { name: 'Request', href: '/request' },
-  { name: 'Contact', href: '/contact' },
+  { name: "Home", href: "/" },
+  { name: "Components", href: "/components" },
+  { name: "Request", href: "/request" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export function MobileSidebar() {
@@ -41,10 +41,10 @@ export function MobileSidebar() {
                       key={item.href}
                       href={item.href}
                       className={cn(
-                        'flex w-full items-center rounded-md px-2 py-2 hover:bg-muted hover:text-foreground',
+                        "flex w-full items-center rounded-md px-2 py-2 hover:bg-muted hover:text-foreground",
                         pathname === item.href
-                          ? 'bg-muted font-medium text-foreground'
-                          : 'text-muted-foreground'
+                          ? "bg-muted font-medium text-foreground"
+                          : "text-muted-foreground"
                       )}
                       onClick={() => setOpen(false)}
                     >
@@ -63,10 +63,10 @@ export function MobileSidebar() {
                       key={component.href}
                       href={component.href}
                       className={cn(
-                        'flex w-full items-center rounded-md px-2 py-2 hover:bg-muted hover:text-foreground',
+                        "flex w-full items-center rounded-md px-2 py-2 hover:bg-muted hover:text-foreground",
                         pathname === component.href
-                          ? 'bg-muted font-medium text-foreground'
-                          : 'text-muted-foreground'
+                          ? "bg-muted font-medium text-foreground"
+                          : "text-muted-foreground"
                       )}
                       onClick={() => setOpen(false)}
                     >
