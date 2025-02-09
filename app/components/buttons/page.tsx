@@ -116,7 +116,7 @@ export default function ButtonsPage() {
               </pre>
             </div>
           ) : (
-            <div className="flex flex-row p-4 gap-2">
+            <div className="w-full  flex flex-row gap-2 items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8">
               <Button variant="default">Default</Button>
               <Button variant="secondary">Secondary</Button>
               <Button variant="destructive">Destructive</Button>
@@ -180,7 +180,7 @@ export default function ButtonsPage() {
                   )}
                 </Button>
                 <pre className="p-4 bg-gray-900 text-white rounded-lg  max-h-96 whitespace-pre-wrap ">
-                  <ScrollArea className="h-96">
+                  <ScrollArea className="h-80">
                     <code className="text-sm">{example.code}</code>
                     <ScrollBar />
                   </ScrollArea>

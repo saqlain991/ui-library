@@ -32,7 +32,10 @@ export default function DocsCard({
           <p className="font-bold text-[16px]">{title}</p>
           <span className=" flex flex-row text-[10px] text-neutral-100 dark:text-neutral-500">
             <Link href={links} target="_blank" rel="noopener noreferrer">
-              <ExternalLink size={20} color="#fff" />
+              <ExternalLink
+                size={20}
+                className="text-neutral-600 dark:text-white"
+              />
             </Link>
           </span>
         </div>

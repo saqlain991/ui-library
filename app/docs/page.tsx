@@ -1,137 +1,85 @@
-import { Badge } from "@/components/ui/badge";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import DocsCard from "@/components/DocsCard";
 import { Separator } from "@/components/ui/separator";
 import React from "react";
 
-const DocsPage = () => {
-  //   const code1 = `npx shadcn@latest init`;
-  //   const code2 = `npx shadcn@latest init -d`;
-  //   const code3 = `
-  // 1. Which style would you like to use? › New York
-  // 2. Which color would you like to use as base color? › Zinc
-  // 3. Which style would you like to use? › New York
-  //   `;
-  //   const code4 = `npx shadcn@latest add button`;
-
+const IntroductionPage = () => {
   return (
     <div>
-      <div>
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Installation </BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </div>
-      <div className="pt-5 ">
+      <div className="pt-5">
         <div className="flex flex-col mb-5">
-          <h1 className="text-4xl font-bold">Installation </h1>
+          <h1 className="text-4xl font-bold">Introduction</h1>
           <p className="text-muted-foreground">
-            Full installation guide for the project
+            Beautifully designed components that you can copy and paste into
+            your apps. Accessible. Customizable. Open Source.
           </p>
+          <Separator className="my-4 w-3/5" />
         </div>
-        {/* <div className="flex flex-col mb-5 ">
-          <h1 className="text-4xl font-bold">Shadcn-Extension</h1>
-          <p className="font-normal">
-            A CLI (inspired by and meant to work with shadcn-ui) for adding
-            components to your project, making it easier to integrate and manage
-            UI components within your codebase.
-          </p>
-        </div> */}
-        <div className="flex flex-col my-5  ">
-          <h1 className="text-4xl font-bold">Usage</h1>
-          <Separator className="my-4 w-28" />
-          <h3 className="text-xl font-semibold mb-4">
-            Initializing a New Project
-          </h3>
-          <p className="font-normal mb-5">
-            A CLI (inspired by and meant to work with shadcn-ui) for adding
-            components to your project, making it easier to integrate and manage
-            UI components within your codebase.
-          </p>
-          <p className="font-normal ">
-            Use the{" "}
-            <span className="bg-slate-200 dark:bg-[#27272A] text-black dark:text-white  px-2 rounded-sm">
-              init
-            </span>{" "}
-            command to initialize command to initialize dependencies for a new
-            project. This command sets up everything you need, including
-            installing necessary dependencies, adding the{" "}
-            <span className="bg-slate-200 dark:bg-[#27272A] text-black dark:text-white  px-2 rounded-sm">
-              cn
-            </span>{" "}
-            utility, configuring{" "}
-            <span className="bg-slate-200 dark:bg-[#27272A] text-black dark:text-white  px-2 rounded-sm">
-              tailwind.config.js
-            </span>{" "}
-            , and setting up CSS variables as well as enabling shadcn-ui in your
-            project.
-          </p>
+
+        <div className="flex flex-col my-5">
+          <h1 className="text-lg font-bold">
+            If you don&apos;t know Shadcn UI:
+          </h1>
+          <ol>
+            Then my friend, you are missing a lot of things. Shadcn UI is a free
+            & open-source component library for React that helps you build a
+            beautiful UI for your applications. It provides a set of accessible,
+            reusable, and composable React components that make it easy to
+            create a beautiful UI for your applications.
+          </ol>
         </div>
-        <div className="flex flex-col my-5 ">
-          <h1 className="text-lg font-bold">1. Create project</h1>
-          <p className="pl-4">
-            Run the{" "}
-            <span className="bg-slate-200 dark:bg-[#27272A] text-black dark:text-white  px-2  pb-[2px] rounded-sm">
-              init
-            </span>{" "}
-            following command to initialize the project:
-          </p>
-          <div className="my-4">
-            <pre className="bg-slate-200 dark:bg-neutral-900  text-black dark:text-white  p-4 rounded-md">
-              <code>npx shadcn@latest init</code>
-              <div>
-                <span className="text-gray-400"># or</span>
-              </div>
-              <code>npx shadcn@latest init -d</code>
-            </pre>
-          </div>
-        </div>
-        <div className="flex flex-col my-5 ">
-          <h1 className="text-lg font-bold">2. Configure components.json </h1>
-          <p className="pl-4">
-            You will be asked a few questions to configure{" "}
-            <span className="bg-slate-200 dark:bg-[#27272A] text-center text-black dark:text-white  px-2 pb-[2px] rounded-sm">
-              components.json
-            </span>
-            :
-          </p>
-          <pre className="bg-slate-200 dark:bg-neutral-900  text-black dark:text-white  p-4 rounded-md mt-4">
-            <ul>1. Which style would you like to use? › New York</ul>
-            <ul>2. Which color would you like to use as base color? › Zinc</ul>
-            <ul>3. Do you want to use CSS variables for colors? › no / yes</ul>
-          </pre>
-          <div className="my-4"></div>
-        </div>
-        <div className="flex flex-col my-5 ">
-          <h1 className="text-lg font-bold">3. That&apos;s it</h1>
-          <p className="pl-4">
-            You can now start adding components to your project.{" "}
-            <span className="bg-slate-200 dark:bg-[#27272A] text-center text-black dark:text-white  px-2 pb-[2px] rounded-sm">
-              components.json
-            </span>
-            :
-          </p>
-          <div className="my-4">
-            <p className="py-4">
-              The command above will add the Button component to your project.
-              You can then import it like this:
-            </p>
-            <pre className="bg-slate-200 dark:bg-neutral-900  text-black dark:text-white  p-4 rounded-md">
-              <code>npx shadcn@latest add button</code>
-            </pre>
+
+        <div className="flex flex-col mt-10">
+          <h1 className="text-lg font-bold">Here are the best UI libraries:</h1>
+
+          {/* Flexbox container with responsive grid layout */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-5">
+            <DocsCard
+              title="Shadcn UI"
+              links="https://ui.shadcn.com/"
+              image="/assets/ui-icon/shadcn.png"
+            >
+              Beautifully designed components that you can copy and paste into
+              your apps. Made with Tailwind CSS. Open source.
+            </DocsCard>
+            <DocsCard
+              title="Acternity UI"
+              links="https://ui.aceternity.com/"
+              image="/assets/ui-icon/acternity.png"
+            >
+              Make your websites look 10x beautiful
+            </DocsCard>
+            <DocsCard
+              title="21st Dev "
+              links="https://21.dev"
+              image="/assets/ui-icon/21st-dev.png"
+            >
+              21st dev is a collection of components, tools, and hooks library
+              for React, Next and many more.
+            </DocsCard>
+            <DocsCard
+              title="Cui Cui UI"
+              links="https://cuicui.day/"
+              image="/assets/ui-icon/cuicui.png"
+            >
+              Cuicui is a collection of components, tools, and hooks that are
+              designed to be simple, customizable and educational.
+            </DocsCard>
+            <DocsCard
+              title="Cult UI"
+              links="https://www.cult-ui.com/"
+              image="/assets/ui-icon/cult-ui.png"
+            >
+              Ready-to-use components for your react apps. Shadcn compatible.
+              Styled with tailwindcss.
+            </DocsCard>
+            <DocsCard
+              title="Park UI"
+              links="https://park-ui.com/"
+              image="/assets/ui-icon/park-ui.png"
+            >
+              Beautifully designed components built with Ark UI and Panda CSS
+              that work with a variety of JS frameworks.
+            </DocsCard>
           </div>
         </div>
       </div>
@@ -139,4 +87,4 @@ const DocsPage = () => {
   );
 };
 
-export default DocsPage;
+export default IntroductionPage;

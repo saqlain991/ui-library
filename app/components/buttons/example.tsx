@@ -1,11 +1,11 @@
 import PreviewGithubStars from "@/components/github-starButton";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { AlertCircle, PartyPopper, Terminal } from "lucide-react";
+import { GradientButton } from "@/components/gradientButton";
+import { ButtonColorful } from "@/components/ui/button-colorful";
 
 export const ButtonExample = [
   {
-    id: "default",
-    title: "Cui Cui Button  ",
+    id: "example1",
+    title: "Github Stars Button",
     component: (
       <div className="w-full flex flex-col gap-2 items-center ">
         <PreviewGithubStars />
@@ -189,73 +189,173 @@ export default function PreviewGithubStars() {
   },
   {
     id: "example2",
-    title: "Success",
+    title: "Gradient Colorful Button",
     component: (
-      <Alert className="border border-[#5cb85c57] ">
-        <PartyPopper className="h-4 w-4" color="#5cb85c" />
-        <AlertTitle className="text-[#5cb85c]">
-          {" "}
-          Profile Updated Successfully.
-        </AlertTitle>
-        <AlertDescription className="font-light text-xs">
-          Your profile has been updated successfully.
-        </AlertDescription>
-      </Alert>
+      <div className="w-full flex flex-col gap-2 items-center ">
+        <ButtonColorful />
+      </div>
     ),
-    code: `import { PartyPopper } from "lucide-react"
+    code: `import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { ArrowUpRight } from "lucide-react";
 
-    import {
-    Alert,
-    AlertDescription,
-    AlertTitle,
-    } from "@/components/ui/alert"
+interface ButtonColorfulProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  label?: string;
+}
 
-    export function AlertDestructive() {
-    return (
-        <Alert className="border border-[#5cb85c] ">
-        <PartyPopper className="h-4 w-4" color="#5cb85c" />
-        <AlertTitle className="text-[#5cb85c]">
-          {" "}
-          Profile Updated Successfully.
-        </AlertTitle>
-        <AlertDescription className="font-light text-xs">
-          Your profile has been updated successfully.
-        </AlertDescription>
-      </Alert>
-    )
-    } `,
+export function ButtonColorful({
+  className,
+  label = "Explore Components",
+  ...props
+}: ButtonColorfulProps) {
+  return (
+    <Button
+      className={cn(
+        "relative h-11 px-4 overflow-hidden",
+        "bg-zinc-900 dark:bg-zinc-100",
+        "transition-all duration-200",
+        "group ",
+        className
+      )}
+      {...props}
+    >
+      {/* Gradient background effect */}
+      <div
+        className={cn(
+          "absolute inset-0",
+          "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500",
+          "opacity-40 group-hover:opacity-80",
+          "blur transition-opacity duration-500"
+        )}
+      />
+
+      {/* Content */}
+      <div className="relative flex items-center justify-center gap-2">
+        <span className="text-white dark:text-zinc-900">{label}</span>
+        <ArrowUpRight className="w-3.5 h-3.5 text-white/90 dark:text-zinc-900/90" />
+      </div>
+    </Button>
+  );
+}
+ `,
   },
   {
     id: "example3",
-    title: "Warning",
+    title: "Gradient Button",
     component: (
-      <Alert title="Warning" variant="destructive">
-        <AlertCircle className="h-4 w-4" />
-        <AlertTitle>Error</AlertTitle>
-        <AlertDescription>
-          Your session has expired. Please log in again.
-        </AlertDescription>
-      </Alert>
+      <div className="w-full h-64 flex flex-col gap-2 items-center overflow-hidden px-4 sm:px-6 lg:px-8 ">
+        <GradientButton>Default</GradientButton>
+
+        <GradientButton variant="primary">Primary</GradientButton>
+
+        <GradientButton variant="secondary">Secondary</GradientButton>
+
+        <GradientButton variant="teal">Teal</GradientButton>
+
+        <GradientButton variant="purple">Purple</GradientButton>
+
+        <GradientButton variant="sunset">Sunset</GradientButton>
+
+        <GradientButton variant="green">Green</GradientButton>
+      </div>
     ),
-    code: `import { AlertCircle } from "lucide-react"
+    code: `"use client";
 
-    import {
-    Alert,
-    AlertDescription,
-    AlertTitle,
-    } from "@/components/ui/alert"
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
-    export function AlertDestructive() {
+// Tailwind-specific configuration for the button styles
+const gradientButtonVariants = cva(
+  [
+    "inline-flex items-center justify-center",
+    "rounded-[11px] min-w-[132px] px-9 py-4",
+    "text-base leading-[19px] font-[500] text-white",
+    "font-sans font-bold",
+    "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+    "disabled:pointer-events-none disabled:opacity-50",
+    "relative appearance-none cursor-pointer",
+    "transition-all duration-500 ease-in-out",
+  ],
+  {
+    variants: {
+      variant: {
+        default: "bg-gradient-to-r from-[#000022] to-[#1f3f6d]", // Default gradient
+        primary: "bg-gradient-to-r from-blue-500 to-indigo-600", // Primary gradient
+        secondary: "bg-gradient-to-r from-pink-500 to-yellow-500", // Secondary gradient
+        teal: "bg-gradient-to-r from-teal-400 to-blue-500", // Teal gradient
+        purple: "bg-gradient-to-r from-purple-400 to-pink-500", // Purple gradient
+        sunset: "bg-gradient-to-r from-orange-500 to-red-500", // Sunset gradient
+        green: "bg-gradient-to-r from-green-400 to-teal-500", // Green gradient
+      },
+      size: {
+        small: "px-6 py-2 text-sm", // Small size variant
+        medium: "px-9 py-4 text-base", // Medium size variant
+        large: "px-12 py-6 text-lg", // Large size variant
+      },
+    },
+    defaultVariants: {
+      variant: "default", // Default variant on load
+      size: "medium", // Medium size by default
+    },
+  }
+);
+
+// Define the type for valid variants
+type GradientButtonVariant =
+  | "default"
+  | "primary"
+  | "secondary"
+  | "teal"
+  | "purple"
+  | "sunset"
+  | "green";
+
+export interface GradientButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof gradientButtonVariants> {
+  asChild?: boolean;
+}
+
+const GradientButton = React.forwardRef<HTMLButtonElement, GradientButtonProps>(
+  (
+    { className, variant = "default", size, asChild = false, ...props },
+    ref
+  ) => {
+    const Comp = asChild ? Slot : "button";
+
+    // Define separate hover effects for each gradient variant
+    const hoverEffects: Record<GradientButtonVariant, string> = {
+      default: "hover:from-[#c96287] hover:to-[#cc7d23]", // Default hover effect
+      primary: "hover:from-blue-600 hover:to-indigo-700", // Primary hover effect
+      secondary: "hover:from-pink-400 hover:to-yellow-300", // Secondary hover effect
+      teal: "hover:from-teal-500 hover:to-blue-600", // Teal hover effect
+      purple: "hover:from-purple-500 hover:to-pink-600", // Purple hover effect
+      sunset: "hover:from-orange-400 hover:to-red-400", // Sunset hover effect
+      green: "hover:from-green-500 hover:to-teal-600", // Green hover effect
+    };
+
+    // Check for the variant and provide the correct hover effect
+    const hoverEffect = hoverEffects[variant as GradientButtonVariant];
+
     return (
-        <Alert variant="destructive">
-        <AlertCircle className="h-4 w-4" />
-        <AlertTitle>Error</AlertTitle>
-        <AlertDescription>
-            Your session has expired. Please log in again.
-        </AlertDescription>
-        </Alert>
-    )
-    }
-    `,
+      <Comp
+        className={cn(
+          gradientButtonVariants({ variant, size, className }),
+          hoverEffect // Add hover effects for each gradient variant
+        )}
+        ref={ref}
+        {...props}
+      />
+    );
+  }
+);
+
+GradientButton.displayName = "GradientButton";
+
+export { GradientButton, gradientButtonVariants };
+`,
   },
 ];

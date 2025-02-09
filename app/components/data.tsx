@@ -29,7 +29,7 @@ export const components = [
   },
   {
     title: "Avatar",
-    href: "/components/avatar",
+    href: "/components/avatars",
     description: "An image element with a fallback for representing the user.",
     // new: true,
   },
@@ -44,6 +44,12 @@ export const components = [
     href: "/components/cards",
     description: "A card is a flexible and extensible content container.",
     new: true,
+  },
+  {
+    title: "Carousels",
+    href: "/components/carousel",
+    description: "A carousel is a rotating set of images.",
+    // new: true,
   },
 
   // Add more components here
