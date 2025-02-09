@@ -51,6 +51,12 @@ export const components = [
     description: "A carousel is a rotating set of images.",
     // new: true,
   },
+  {
+    title: "Inputs",
+    href: "/components/inputs",
+    description: "A form control for entering text.",
+    new: true,
+  },
 
   // Add more components here
 ];

@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 import { docsData } from "./data"; // Import the arrays from a separate file
 import { components } from "./../components/data"; // Import the arrays from a separate file
+import { Badge } from "@/components/ui/badge";
 
 interface ComponentsLayoutProps {
   children: React.ReactNode;
@@ -19,8 +20,8 @@ export default function ComponentsLayout({ children }: ComponentsLayoutProps) {
     <div className="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10 pt-16 px-10">
       {/* Desktop sidebar - only visible on large screens */}
       <aside className="fixed top-14 z-30 -ml-2 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto border-r lg:sticky lg:block">
-        <ScrollArea className="py-6 pr-6 lg:py-8">
-          <h4 className="mb-4 px-2 text-lg font-semibold">Documentation</h4>
+        <ScrollArea className="py-6 pr-6 lg:py-8 ">
+          <h4 className="mb-4 px-2 text-lg font-semibold ">Documentation</h4>
           <div className="grid grid-flow-row auto-rows-max text-sm">
             {docsData.map((docsDatas) => (
               <Link
@@ -38,21 +39,30 @@ export default function ComponentsLayout({ children }: ComponentsLayoutProps) {
             ))}
 
             <Separator className="my-4 text-gray-200" />
-            <h4 className="mb-4 px-2 text-lg font-semibold">Components</h4>
-            {components.map((component) => (
-              <Link
-                key={component.href}
-                href={component.href}
-                className={cn(
-                  "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:bg-muted hover:text-foreground",
-                  pathname === component.href
-                    ? "bg-muted font-medium text-foreground"
-                    : "text-muted-foreground"
-                )}
-              >
-                {component.title}
-              </Link>
-            ))}
+            <h4 className="mb-4 px-2 text-lg font-semibold ">Components</h4>
+            <div className="grid grid-flow-row auto-rows-max text-sm">
+              {components.map((component) => (
+                <Link
+                  key={component.href}
+                  href={component.href}
+                  className={cn(
+                    "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:bg-muted hover:text-foreground",
+                    pathname === component.href
+                      ? "bg-muted font-medium text-foreground"
+                      : "text-muted-foreground"
+                  )}
+                >
+                  {component.title}
+                  <div className="ml-2">
+                    {component.new ? (
+                      <Badge className="bg-[#ADFA1D]  font-normal text-black h-5 text-sm">
+                        New
+                      </Badge>
+                    ) : null}
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </ScrollArea>
       </aside>
