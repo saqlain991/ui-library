@@ -55,8 +55,8 @@ export default function RequestPage() {
   }
 
   return (
-    <div className="container py-10">
-      <div className="mx-auto max-w-2xl">
+    <div className="container py-20   ">
+      <div className="mx-auto  max-w-2xl">
         <div className="mb-8 space-y-2">
           <h1 className="text-3xl font-bold">Request a Component</h1>
           <p className="text-muted-foreground">

@@ -50,7 +50,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="container py-10">
+    <div className="container py-20">
       <div className="mx-auto max-w-5xl">
         <div className="grid gap-10 md:grid-cols-2">
           <div>
@@ -65,7 +65,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-semibold">Email</h3>
                   <p className="text-sm text-muted-foreground">
-                    saqlain@webmuza.com
+                    saqlainsultan991@gmail.com
                   </p>
                 </div>
               </div>
