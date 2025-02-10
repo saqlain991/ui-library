@@ -16,7 +16,6 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Search, Blocks, Moon, Sun, Github } from "lucide-react";
 import { useTheme } from "next-themes";
-import Clock from "./clock";
 
 const navigation = [
   // { name: "Home", href: "/" },
@@ -49,7 +48,7 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center space-x-2">
             <Blocks className="h-6 w-6" />
-            <span className="font-bold">UI Library</span>
+            <span className="font-bold">100xDevs UI</span>
           </Link>
         </div>
 

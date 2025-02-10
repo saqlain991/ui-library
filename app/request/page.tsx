@@ -46,17 +46,44 @@ export default function RequestPage() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    toast({
-      title: "Request submitted!",
-      description: "We will review your component request.",
-    });
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      // Make a POST request to the API route
+      const res = await fetch("/api/request", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        toast({
+          title: "Request submitted!",
+          description: "We will review your component request.",
+        });
+        form.reset();
+      } else {
+        toast({
+          title: "Submission failed.",
+          description: result.message || "Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error!",
+        description: "An error occurred while submitting the request.",
+        variant: "destructive",
+      });
+    }
   }
 
   return (
-    <div className="container py-20   ">
-      <div className="mx-auto  max-w-2xl">
+    <div className="container py-20 px-10">
+      <div className="mx-auto max-w-2xl">
         <div className="mb-8 space-y-2">
           <h1 className="text-3xl font-bold">Request a Component</h1>
           <p className="text-muted-foreground">
