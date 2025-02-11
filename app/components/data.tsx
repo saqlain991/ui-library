@@ -13,20 +13,20 @@ export const components = [
     href: "/components/alert",
     description: "Displays a callout for user attention.",
   },
-  {
-    title: "Alert Dialog",
-    href: "/components/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content.",
-    new: true,
-  },
-  {
-    title: "Aspect Ratio",
-    href: "/components/aspect-ratio",
-    description:
-      "A container that maintains the aspect ratio of its child element.",
-    new: true,
-  },
+  // {
+  //   title: "Alert Dialog",
+  //   href: "/components/alert-dialog",
+  //   description:
+  //     "A modal dialog that interrupts the user with important content.",
+  //   new: true,
+  // },
+  // {
+  //   title: "Aspect Ratio",
+  //   href: "/components/aspect-ratio",
+  //   description:
+  //     "A container that maintains the aspect ratio of its child element.",
+  //   new: true,
+  // },
   {
     title: "Avatar",
     href: "/components/avatars",

@@ -7,6 +7,7 @@ import { MobileSidebar } from "@/components/mobile-sidebar";
 import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/footer";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import img1 from "@/assets/ui-icon/Shadcn.png";
 
 // Define the Outfit font with a variable for custom CSS usage
 const outfit = Outfit({
@@ -15,9 +16,30 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Shadcn UI Library",
+  title: "HumanEra UI Library",
   description:
     "A beautiful and comprehensive UI component library built with Shadcn UI and Tailwind CSS",
+  icons: {
+    icon: [
+      {
+        url: "/favicon/favicon.ico",
+        sizes: "16x16 32x32 48x48 64x64 128x128",
+        type: "image/x-icon",
+      },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      {
+        url: "/favicon/favicon-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        url: "/favicon/favicon-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+    apple: "/favicon/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -27,6 +49,44 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Standard Favicon */}
+        <link
+          rel="icon"
+          href="/favicon/favicon.ico"
+          sizes="16x16 32x32 48x48 64x64 128x128"
+        />
+
+        {/* PNG Icons for different devices */}
+        <link
+          rel="icon"
+          type="image/png"
+          href="/favicon/favicon-32x32.png"
+          sizes="32x32"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          href="/favicon/favicon-192x192.png"
+          sizes="192x192"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          href="/favicon/favicon-512x512.png"
+          sizes="512x512"
+        />
+
+        {/* Apple Touch Icon (iOS Safari) */}
+        <link
+          rel="apple-touch-icon"
+          href="/favicon/apple-touch-icon.png"
+          sizes="180x180"
+        />
+
+        {/* Android Chrome Theme */}
+        <meta name="theme-color" content="#ffffff" />
+      </head>
       <body
         className={`${outfit.className} bg-white dark:bg-black text-black dark:text-white`}
       >

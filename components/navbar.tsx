@@ -14,11 +14,19 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Search, Blocks, Moon, Sun, Github } from "lucide-react";
+import {
+  Menu,
+  Search,
+  Blocks,
+  Moon,
+  Sun,
+  SquareMousePointer,
+} from "lucide-react";
 import { useTheme } from "next-themes";
+import { components } from "@/app/components/data"; // Import components from data.tsx
+import { ScrollArea } from "./ui/scroll-area";
 
 const navigation = [
-  // { name: "Home", href: "/" },
   { name: "Docs", href: "/docs/introduction" },
   { name: "Components", href: "/components" },
   { name: "Request", href: "/request" },
@@ -29,6 +37,7 @@ const navigation = [
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
+  const [query, setQuery] = React.useState("");
   const { theme, setTheme } = useTheme();
 
   React.useEffect(() => {
@@ -42,13 +51,25 @@ export function Navbar() {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
+  const filteredPages = navigation.filter((item) =>
+    item.name.toLowerCase().includes(query.toLowerCase())
+  );
+
+  // Filter components using the imported components from data.tsx
+  const filteredComponents = components.filter((item) =>
+    item.title.toLowerCase().includes(query.toLowerCase())
+  );
+
   return (
     <header className="fixed top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-10">
       <nav className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 md:gap-2">
           <Link href="/" className="flex items-center space-x-2">
-            <Blocks className="h-6 w-6" />
-            <span className="font-bold">100xDevs UI</span>
+            <SquareMousePointer />
+            <div className="flex bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-black/90 to-rose-300 dark:from-indigo-300 dark:via-white/90 dark:to-rose-300">
+              <p className="text-lg md:text-xl font-bold">Human</p>
+              <span className="text-lg md:text-xl font-bold">Era UI</span>
+            </div>
           </Link>
         </div>
 
@@ -63,7 +84,6 @@ export function Navbar() {
                   ? "text-foreground"
                   : "text-muted-foreground"
               )}
-              // target="_blank"
             >
               {item.name}
             </Link>
@@ -88,13 +108,6 @@ export function Navbar() {
             <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
             <span className="sr-only">Toggle theme</span>
           </Button>
-          {/* <Button className="hidden md:flex">Get Started</Button> */}
-          {/* <Button className="hidden md:flex">
-            <Github size={20} /> Github
-          </Button> */}
-          {/* <div>
-            <Clock />
-          </div> */}
 
           <Sheet>
             <SheetTrigger asChild>
@@ -123,27 +136,52 @@ export function Navbar() {
           </Sheet>
         </div>
       </nav>
-      <CommandDialog open={open} onOpenChange={setOpen}>
-        <div className="flex flex-col">
-          <CommandInput placeholder="Type a command or search..." />
-          <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
-            <CommandGroup heading="Pages">
-              {navigation.map((item) => (
-                <CommandItem
-                  key={item.name}
-                  onSelect={() => {
-                    setOpen(false);
-                    window.location.href = item.href;
-                  }}
-                >
-                  {item.name}
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          </CommandList>
-        </div>
-      </CommandDialog>
+      <div>
+        <CommandDialog open={open} onOpenChange={setOpen}>
+          <div className="flex flex-col">
+            <CommandInput
+              placeholder="Type a command or search..."
+              value={query}
+              onInput={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setQuery(e.target.value)
+              }
+            />
+            <CommandList>
+              <CommandEmpty>No results found.</CommandEmpty>
+              {/* Pages */}
+              <ScrollArea className="h-72 w-full rounded-md">
+                <CommandGroup heading="Pages">
+                  {filteredPages.map((item) => (
+                    <CommandItem
+                      key={item.name}
+                      onSelect={() => {
+                        setOpen(false);
+                        window.location.href = item.href;
+                      }}
+                    >
+                      {item.name}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+                {/* Components */}
+                <CommandGroup heading="Components">
+                  {filteredComponents.map((item) => (
+                    <CommandItem
+                      key={item.title}
+                      onSelect={() => {
+                        setOpen(false);
+                        window.location.href = item.href;
+                      }}
+                    >
+                      {item.title}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </ScrollArea>
+            </CommandList>
+          </div>
+        </CommandDialog>
+      </div>
     </header>
   );
 }

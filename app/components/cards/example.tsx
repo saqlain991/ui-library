@@ -299,8 +299,8 @@ export function SocialCard({
     commandRun:
       'npx shadcn@latest add "https://21st.dev/r/aceternity/glare-card"',
     component: (
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-        <GlareCard className="flex flex-col items-center justify-center">
+      <div className="flex flex-row justify-between gap-6 px-4 overflow-hidden">
+        <GlareCard className="flex w-full flex-col items-center justify-center">
           <svg
             width="66"
             height="65"
